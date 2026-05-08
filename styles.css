@@ -94,6 +94,32 @@ button {
   gap: 16px;
 }
 
+.selector-card {
+  background: var(--surface-strong);
+  border: 1px solid rgba(64, 46, 26, 0.08);
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.career-select {
+  width: 100%;
+  border: 1px solid rgba(64, 46, 26, 0.16);
+  border-radius: 14px;
+  background: #fffdf8;
+  color: var(--text);
+  padding: 12px 14px;
+  font-size: 0.98rem;
+}
+
+.career-select:focus-visible {
+  outline: 2px solid rgba(169, 90, 30, 0.35);
+  border-color: rgba(169, 90, 30, 0.45);
+}
+
 .stat-card,
 .mini-stat {
   background: var(--surface-strong);
@@ -236,6 +262,14 @@ button {
   border-radius: 999px;
 }
 
+.career-panel {
+  display: none;
+}
+
+.career-panel.is-active {
+  display: block;
+}
+
 .diagram-shell::-webkit-scrollbar-thumb {
   background: rgba(90, 70, 46, 0.42);
   border-radius: 999px;
@@ -282,8 +316,8 @@ button {
 .board {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(8, minmax(172px, 172px));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 14px;
   align-items: start;
   padding: 10px 4px 16px;
@@ -291,6 +325,7 @@ button {
 }
 
 .semestre {
+  flex: 0 0 172px;
   padding: 16px;
   border-radius: var(--radius-lg);
   display: flex;
@@ -471,12 +506,6 @@ button {
   }
 }
 
-@media (max-width: 1380px) {
-  .board {
-    grid-template-columns: repeat(8, minmax(168px, 168px));
-  }
-}
-
 @media (max-width: 1180px) {
   .hero,
   .info-strip {
@@ -515,6 +544,10 @@ button {
 
   .stat-grid {
     grid-template-columns: 1fr;
+  }
+
+  .semestre {
+    flex-basis: 164px;
   }
 
   .materia {
