@@ -38,6 +38,135 @@ button {
   padding: 28px 0 48px;
 }
 
+[hidden] {
+  display: none !important;
+}
+
+.catalog-view {
+  min-height: calc(100vh - 76px);
+  display: grid;
+  place-content: center;
+  gap: 28px;
+}
+
+.catalog-header {
+  text-align: center;
+}
+
+.catalog-header h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 1;
+}
+
+.catalog-header p:last-child {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.career-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+  justify-content: center;
+  gap: 16px;
+}
+
+.career-card {
+  min-height: 150px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  text-align: left;
+  font-size: 1.12rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.career-card:hover,
+.career-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.career-card-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  color: white;
+  background: linear-gradient(135deg, #b86a1e, #70401a);
+}
+
+.career-card small {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 500;
+}
+
+.back-button {
+  margin: 0 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 16px;
+  color: var(--text);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.update-notice {
+  position: fixed;
+  z-index: 20;
+  right: 20px;
+  bottom: 20px;
+  width: min(440px, calc(100% - 40px));
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #2f241c;
+  color: #fff7ef;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.update-notice div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.update-notice span {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.update-notice button {
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 13px;
+  cursor: pointer;
+}
+
+.update-notice .dismiss-update {
+  padding: 5px 8px;
+  background: transparent;
+  color: white;
+  font-size: 1.3rem;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(320px, 0.8fr);
@@ -92,32 +221,6 @@ button {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.selector-card {
-  background: var(--surface-strong);
-  border: 1px solid rgba(64, 46, 26, 0.08);
-  border-radius: 18px;
-  box-shadow: var(--shadow-soft);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.career-select {
-  width: 100%;
-  border: 1px solid rgba(64, 46, 26, 0.16);
-  border-radius: 14px;
-  background: #fffdf8;
-  color: var(--text);
-  padding: 12px 14px;
-  font-size: 0.98rem;
-}
-
-.career-select:focus-visible {
-  outline: 2px solid rgba(169, 90, 30, 0.35);
-  border-color: rgba(169, 90, 30, 0.45);
 }
 
 .stat-card,
@@ -246,20 +349,7 @@ button {
 .diagram-shell {
   position: relative;
   border-radius: 32px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-bottom: 12px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(90, 70, 46, 0.45) rgba(255, 255, 255, 0.45);
-}
-
-.diagram-shell::-webkit-scrollbar {
-  height: 12px;
-}
-
-.diagram-shell::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 999px;
+  overflow: visible;
 }
 
 .career-panel {
@@ -270,15 +360,10 @@ button {
   display: block;
 }
 
-.diagram-shell::-webkit-scrollbar-thumb {
-  background: rgba(90, 70, 46, 0.42);
-  border-radius: 999px;
-}
-
 .connection-layer {
   position: absolute;
-  inset: 0 auto 12px 0;
-  width: max-content;
+  inset: 0;
+  width: 100%;
   height: 100%;
   pointer-events: none;
   overflow: visible;
@@ -316,16 +401,16 @@ button {
 .board {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
   gap: 14px;
   align-items: start;
   padding: 10px 4px 16px;
-  min-width: max-content;
+  min-width: 0;
 }
 
 .semestre {
-  flex: 0 0 172px;
+  min-width: 0;
   padding: 16px;
   border-radius: var(--radius-lg);
   display: flex;
@@ -537,6 +622,19 @@ button {
 }
 
 @media (max-width: 560px) {
+  .career-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .career-card {
+    min-height: 125px;
+  }
+
+  .update-notice {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
   .hero h1 {
     max-width: none;
     line-height: 1.02;
@@ -547,7 +645,12 @@ button {
   }
 
   .semestre {
-    flex-basis: 164px;
+    padding: 14px;
+  }
+
+  .board {
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+    gap: 10px;
   }
 
   .materia {

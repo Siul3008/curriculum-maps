@@ -14,10 +14,22 @@
   <link rel="icon" href="icon-192.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="icon-192.svg" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="careers.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <div class="page-shell">
+    <section id="catalogView" class="catalog-view">
+      <header class="catalog-header">
+        <p class="eyebrow">Planificador visual</p>
+        <h1>Elige tu carrera</h1>
+        <p>Selecciona una carrera para abrir su malla curricular.</p>
+      </header>
+      <div id="careerCards" class="career-cards"></div>
+    </section>
+
+    <div id="careerView" class="career-view" hidden>
+    <button id="backToCatalog" class="back-button" type="button">← Volver a carreras</button>
     <header class="hero">
       <div class="hero-copy">
         <p class="eyebrow">Planificador visual</p>
@@ -29,14 +41,6 @@
       </div>
 
       <aside class="hero-panel">
-        <div class="selector-card">
-          <label class="stat-label" for="careerSelect">Selecciona tu carrera</label>
-          <select id="careerSelect" class="career-select">
-            <option value="computacion">Ingeniería en Computación</option>
-            <option value="arquitectura">Arquitectura</option>
-          </select>
-        </div>
-
         <div class="stat-card">
           <span class="stat-label">Progreso general</span>
           <strong id="progressPercent">0%</strong>
@@ -89,141 +93,17 @@
         </div>
       </div>
     </section>
-
-    <section class="career-panel is-active" data-career="computacion">
-      <main class="diagram-shell">
-        <svg class="connection-layer" aria-hidden="true"></svg>
-        <div class="board">
-          <section class="semestre">
-            <div class="semester-heading">
-              <p class="semester-kicker">Etapa 1</p>
-              <h2>I Semestre</h2>
-              <span>15 créditos</span>
-            </div>
-            <div class="materias">
-              <article class="materia mate" data-id="ma1403" data-credits="4" tabindex="0"><div class="materia-content"><span>Matemática Discreta</span><small>MA1403 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia prog" data-id="ic1802" data-credits="3" tabindex="0"><div class="materia-content"><span>Introducción a la Programación</span><small>IC1802 · 3</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia prog" data-id="ic1803" data-credits="3" tabindex="0"><div class="materia-content"><span>Taller de Programación</span><small>IC1803 · 3</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia compu" data-id="ic1400" data-credits="3" tabindex="0"><div class="materia-content"><span>Fundamentos de Organización de Computadoras</span><small>IC1400 · 3</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia hum" data-id="ei1106" data-credits="2" tabindex="0"><div class="materia-content"><span>Comunicación Escrita</span><small>EI1106 · 2</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia deporcult" data-id="se1100" data-credits="0" tabindex="0"><div class="materia-content"><span>Deportes/Cultural</span><small>SE1100 · 0</small></div><button class="status-toggle" type="button">Marcar</button></article>
-            </div>
-          </section>
-
-          <section class="semestre">
-            <div class="semester-heading">
-              <p class="semester-kicker">Etapa 2</p>
-              <h2>II Semestre</h2>
-              <span>18 créditos</span>
-            </div>
-            <div class="materias">
-              <article class="materia mate" data-id="ma1102" data-req="ma1403" data-credits="4" tabindex="0"><div class="materia-content"><span>Cálculo Diferencial e Integral</span><small>MA1102 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia prog" data-id="ic2101" data-req="ic1802,ic1803" data-credits="3" tabindex="0"><div class="materia-content"><span>Programación Orientada a Objetos</span><small>IC2101 · 3</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia prog" data-id="ic2001" data-coreq="ic2101" data-credits="4" tabindex="0"><div class="materia-content"><span>Estructuras de Datos</span><small>IC2001 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia compu" data-id="ic3101" data-req="ic1400,ic1803" data-credits="4" tabindex="0"><div class="materia-content"><span>Arquitectura de Computadoras</span><small>IC3101 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia hum" data-id="ei1107" data-req="ei1106" data-credits="1" tabindex="0"><div class="materia-content"><span>Comunicación Oral</span><small>EI1107 · 1</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia hum" data-id="ci1230" data-credits="2" tabindex="0"><div class="materia-content"><span>Inglés 1</span><small>CI1230 · 2</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia deporcult" data-id="se1200" data-credits="0" tabindex="0"><div class="materia-content"><span>Deportes/Cultural</span><small>SE1200 · 0</small></div><button class="status-toggle" type="button">Marcar</button></article>
-            </div>
-          </section>
-
-          <section class="semestre">
-            <div class="semester-heading">
-              <p class="semester-kicker">Etapa 3</p>
-              <h2>III Semestre</h2>
-              <span>18 créditos</span>
-            </div>
-            <div class="materias">
-              <article class="materia mate" data-id="ma1103" data-req="ma1102" data-credits="4" tabindex="0"><div class="materia-content"><span>Cálculo y Álgebra Lineal</span><small>MA1103 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia prog" data-id="ic3002" data-req="ic2001,ma1102" data-credits="4" tabindex="0"><div class="materia-content"><span>Análisis de Algoritmos</span><small>IC3002 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia prog" data-id="ic4301" data-req="ic2001" data-coreq="ma1103" data-credits="4" tabindex="0"><div class="materia-content"><span>Bases de Datos I</span><small>IC4301 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia sw" data-id="ic5821" data-coreq="ic4301,ma1103" data-credits="4" tabindex="0"><div class="materia-content"><span>Requisitos de Software</span><small>IC5821 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia hum" data-id="ci1231" data-req="ci1230" data-credits="2" tabindex="0"><div class="materia-content"><span>Inglés 2</span><small>CI1231 · 2</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia deporcult" data-id="se1400" data-credits="0" tabindex="0"><div class="materia-content"><span>Deportes/Cultural</span><small>SE1400 · 0</small></div><button class="status-toggle" type="button">Marcar</button></article>
-            </div>
-          </section>
-
-          <section class="semestre">
-            <div class="semester-heading">
-              <p class="semester-kicker">Etapa 4</p>
-              <h2>IV Semestre</h2>
-              <span>17 créditos</span>
-            </div>
-            <div class="materias">
-              <article class="materia mate" data-id="ma2404" data-req="ma1103" data-credits="4" tabindex="0"><div class="materia-content"><span>Probabilidades</span><small>MA2404 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia prog" data-id="ic4700" data-req="ic3002,ic3101" data-credits="4" tabindex="0"><div class="materia-content"><span>Lenguajes de Programación</span><small>IC4700 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia prog" data-id="ic4302" data-req="ic4301" data-credits="3" tabindex="0"><div class="materia-content"><span>Bases de Datos II</span><small>IC4302 · 3</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia sw" data-id="ic6821" data-req="ic5821" data-credits="4" tabindex="0"><div class="materia-content"><span>Diseño de Software</span><small>IC6821 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia hum" data-id="cs2101" data-req="ei1107" data-credits="2" tabindex="0"><div class="materia-content"><span>Ambiente Humano</span><small>CS2101 · 2</small></div><button class="status-toggle" type="button">Marcar</button></article>
-            </div>
-          </section>
-
-          <section class="semestre">
-            <div class="semester-heading">
-              <p class="semester-kicker">Etapa 5</p>
-              <h2>V Semestre</h2>
-              <span>17 créditos</span>
-            </div>
-            <div class="materias">
-              <article class="materia mate" data-id="ma3405" data-req="ma2404" data-credits="4" tabindex="0"><div class="materia-content"><span>Estadística</span><small>MA3405 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia prog" data-id="ic5701" data-req="ic4700" data-credits="4" tabindex="0"><div class="materia-content"><span>Compiladores e Intérpretes</span><small>IC5701 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia sw" data-id="ic6831" data-req="ic6821" data-coreq="ic4810" data-credits="3" tabindex="0"><div class="materia-content"><span>Aseguramiento de la Calidad del Software</span><small>IC6831 · 3</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia gest" data-id="ic4810" data-req="ic5821" data-credits="4" tabindex="0"><div class="materia-content"><span>Administración de Proyectos</span><small>IC4810 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia hum" data-id="cs3401" data-req="cs2101" data-credits="2" tabindex="0"><div class="materia-content"><span>Seminario EFH</span><small>CS3401 · 2</small></div><button class="status-toggle" type="button">Marcar</button></article>
-            </div>
-          </section>
-
-          <section class="semestre">
-            <div class="semester-heading">
-              <p class="semester-kicker">Etapa 6</p>
-              <h2>VI Semestre</h2>
-              <span>18 créditos</span>
-            </div>
-            <div class="materias">
-              <article class="materia ind" data-id="ic6201" data-req="ma3405" data-credits="4" tabindex="0"><div class="materia-content"><span>Investigación de Operaciones</span><small>IC6201 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia compu" data-id="ic6600" data-req="ic5701" data-credits="4" tabindex="0"><div class="materia-content"><span>Principios de Sistemas Operativos</span><small>IC6600 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia elect" data-id="ic4003" data-credits="3" tabindex="0"><div class="materia-content"><span>Electiva I</span><small>IC4003 · 3</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia sw" data-id="ic6871" data-req="ic4810,ic6831" data-credits="3" tabindex="0"><div class="materia-content"><span>Seguridad del Software</span><small>IC6871 · 3</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia prog" data-id="ic7900" data-req="ic4810" data-coreq="cs3402" data-credits="2" tabindex="0"><div class="materia-content"><span>Computación y Sociedad</span><small>IC7900 · 2</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia hum" data-id="cs3402" data-req="cs3401" data-credits="2" tabindex="0"><div class="materia-content"><span>Seminario EC</span><small>CS3402 · 2</small></div><button class="status-toggle" type="button">Marcar</button></article>
-            </div>
-          </section>
-
-          <section class="semestre">
-            <div class="semester-heading">
-              <p class="semester-kicker">Etapa 7</p>
-              <h2>VII Semestre</h2>
-              <span>18 créditos</span>
-            </div>
-            <div class="materias">
-              <article class="materia ind" data-id="ic6200" data-req="ic6201,ic5701" data-credits="4" tabindex="0"><div class="materia-content"><span>Inteligencia Artificial</span><small>IC6200 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia compu" data-id="ic7602" data-req="ic6600" data-credits="4" tabindex="0"><div class="materia-content"><span>Redes</span><small>IC7602 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia elect" data-id="ic5001" data-credits="3" tabindex="0"><div class="materia-content"><span>Electiva II</span><small>IC5001 · 3</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia sw" data-id="ic7841" data-req="ic6871,ic6831,ic4302" data-credits="3" tabindex="0"><div class="materia-content"><span>Proyecto de Ingeniería de Software</span><small>IC7841 · 3</small></div><button class="status-toggle" type="button">Marcar</button></article>
-              <article class="materia proj" data-id="ae4208" data-coreq="ic7841" data-credits="4" tabindex="0"><div class="materia-content"><span>Desarrollo de Emprendedores</span><small>AE4208 · 4</small></div><button class="status-toggle" type="button">Marcar</button></article>
-            </div>
-          </section>
-
-          <section class="semestre highlight">
-            <div class="semester-heading">
-              <p class="semester-kicker">Etapa final</p>
-              <h2>VIII Semestre</h2>
-              <span>12 créditos</span>
-            </div>
-            <div class="materias">
-              <article class="materia prac" data-id="ic6524" data-req="ae4208,ci1231,cs3402,ic2101,ic5001,ic4003,ic6200,ic7602,ic7841,se1100,se1200,se1400" data-credits="12" tabindex="0"><div class="materia-content"><span>Práctica Profesional</span><small>IC6524 · 12</small></div><button class="status-toggle" type="button">Marcar</button></article>
-            </div>
-          </section>
-        </div>
-      </main>
-    </section>
-
-    <section class="career-panel" data-career="arquitectura">
-      <main class="diagram-shell">
-        <svg class="connection-layer" aria-hidden="true"></svg>
-        <div class="board"></div>
-      </main>
-    </section>
+    <div id="careerPanels"></div>
+    </div>
   </div>
+
+  <aside id="updateNotice" class="update-notice" role="status" aria-live="polite" hidden>
+    <div>
+      <strong>Nueva versión disponible</strong>
+      <span>Actualiza para ver los últimos cambios. Tu progreso se conservará.</span>
+    </div>
+    <button id="applyUpdate" type="button">Actualizar</button>
+    <button id="dismissUpdate" class="dismiss-update" type="button" aria-label="Cerrar aviso">×</button>
+  </aside>
 </body>
 </html>
