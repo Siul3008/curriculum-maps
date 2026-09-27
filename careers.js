@@ -210,8 +210,7 @@ const CAREERS = {
         "credits": 4,
         "area": "sw",
         "coreq": [
-          "ic4301",
-          "ma1103"
+          "ic4301"
         ]
       },
       {
